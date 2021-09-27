@@ -2,7 +2,6 @@ from typing import List
 
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        
         if len(nums1) == 0:
             if len(nums2) % 2 == 0:
                 return (nums2[len(nums2) // 2] + nums2[len(nums2) // 2 - 1]) / 2.0
@@ -24,12 +23,9 @@ class Solution:
                 i -= 1
             else:
                 j -= 1
-             
         
         increment = min(len(nums1), len(nums2))
 
-        i1_counter = 0
-        
         while increment > 1:
             if nums1[i] >= nums2[j]:
                 increment = min(min((increment + 1) // 2, i), len(nums2) - j - 1)
@@ -39,9 +35,6 @@ class Solution:
                 increment = min(min((increment + 1) // 2, j), len(nums1) - i - 1)
                 i += increment
                 j -= increment
-                
-            if increment <= 1:
-                i1_counter += 1
                 
         i_smaller = nums1[i] <= nums2[j]
         
